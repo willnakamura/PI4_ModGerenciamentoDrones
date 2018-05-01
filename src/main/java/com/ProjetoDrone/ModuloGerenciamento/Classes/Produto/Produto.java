@@ -34,7 +34,7 @@ public class Produto implements Serializable {
     @Id
     @Column(name = "produto_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idProd;
+    private Integer idProd;
 
 //    private int precoId;
     //estoque 
@@ -94,11 +94,11 @@ public class Produto implements Serializable {
     }
 
     //--------------------Fim dos construtores------------------
-    public int getIdProd() {
+    public Integer getIdProd() {
         return idProd;
     }
 
-    public void setIdProd(int idProd) {
+    public void setIdProd(Integer idProd) {
         this.idProd = idProd;
     }
 //
@@ -164,6 +164,14 @@ public class Produto implements Serializable {
 
     public void setPeso(Double peso) {
         this.peso = peso;
+    }
+
+    public Precos getPrecos() {
+        return precos;
+    }
+
+    public void setPrecos(Precos precos) {
+        this.precos = precos;
     }
 
 }

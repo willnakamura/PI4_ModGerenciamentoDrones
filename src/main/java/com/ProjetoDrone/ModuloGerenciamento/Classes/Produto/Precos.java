@@ -38,7 +38,7 @@ public class Precos implements Serializable {
     @Id
     @Column(name = "preco_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int IdPreco;
+    private Integer IdPreco;
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
@@ -73,11 +73,11 @@ public class Precos implements Serializable {
     }
 
     //------------------------Fim dos construtores---------------
-    public int getIdPrrco() {
+    public Integer getIdPrrco() {
         return IdPreco;
     }
 
-    public void setIdPrrco(int IdPrrco) {
+    public void setIdPrrco(Integer IdPrrco) {
         this.IdPreco = IdPrrco;
     }
 //
