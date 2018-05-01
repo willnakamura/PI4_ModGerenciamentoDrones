@@ -27,4 +27,9 @@ public class RedirecionamentosController {
     public ModelAndView home() {
         return new ModelAndView("home");
     }
+
+    @GetMapping("/cadastroProduto")
+    public ModelAndView cadastrarProd() {
+        return new ModelAndView("cadastrarProd");
+    }
 }

@@ -21,7 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author Rafael Rodrigues
  */
 
-@Controller
+/*@Controller
 @RequestMapping("/cadastrar/cliente")
 public class CadastroFuncionarioController {
 
@@ -48,4 +48,4 @@ public class CadastroFuncionarioController {
 
         return new ModelAndView("redirect:/home/login");
     }    
-}
+}*/

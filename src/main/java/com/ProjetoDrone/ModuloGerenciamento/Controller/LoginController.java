@@ -45,7 +45,7 @@ public class LoginController {
 
         Funcionario cli = new Funcionario();
 
-        cli = repository.logar(login.getUser());
+       // cli = repository.logar(login.getUser());
 
         if (cli == null) {
             return new ModelAndView("Login");
