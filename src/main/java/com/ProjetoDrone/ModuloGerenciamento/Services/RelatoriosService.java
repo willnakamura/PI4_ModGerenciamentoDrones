@@ -5,10 +5,15 @@
  */
 package com.ProjetoDrone.ModuloGerenciamento.Services;
 
+import com.ProjetoDrone.ModuloGerenciamento.Relatorios.Cliente;
+import java.io.Serializable;
+import java.util.List;
+
 /**
  *
  * @author Josué
  */
-public class RelatoriosService {
-    
+public interface RelatoriosService extends Serializable {
+
+    public List<Cliente> listar();
 }
