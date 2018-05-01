@@ -112,4 +112,13 @@ public class Precos implements Serializable {
     public Date getDataCriacao() {
         return dataCriacao;
     }
+
+    public Set<Produto> getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Set<Produto> produto) {
+        this.produto = produto;
+    }
+    
 }

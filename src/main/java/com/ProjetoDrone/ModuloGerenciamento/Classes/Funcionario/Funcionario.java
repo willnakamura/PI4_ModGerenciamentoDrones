@@ -26,7 +26,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 
 @Entity
-@Table(name = "Clientes")
+@Table(name = "Funcionario")
 public class Funcionario implements Serializable {
 
     @Id
