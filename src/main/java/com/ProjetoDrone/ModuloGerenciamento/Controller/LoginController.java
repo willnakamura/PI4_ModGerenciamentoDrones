@@ -9,6 +9,7 @@ import com.ProjetoDrone.ModuloGerenciamento.Classes.Funcionario.Funcionario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.ProjetoDrone.ModuloGerenciamento.Classes.Login.Login;
+import com.ProjetoDrone.ModuloGerenciamento.Repository.FuncionarioRepository;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.validation.BindingResult;
@@ -27,15 +28,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/login")
 public class LoginController {
 
-    /*@Autowired
-    private ClienteRepository repository;*/
+    @Autowired
+    private FuncionarioRepository repository;
     //
     @GetMapping("/telaLogin")
     public ModelAndView login() {
         return new ModelAndView("Login").addObject("login", new Login());
     }
 
-    @PostMapping("/logando")
+    /*@PostMapping("/logando")
     public ModelAndView logando(@ModelAttribute("login") @Valid Login login, BindingResult bindingResult,
             RedirectAttributes redirectAttributes, HttpSession session) {
 
@@ -43,9 +44,9 @@ public class LoginController {
             return new ModelAndView("Login");
         }
 
-        Funcionario cli = new Funcionario();
+        Funcionario func = new Funcionario();
 
-       // cli = repository.logar(login.getUser());
+        func = repository.logar
 
         if (cli == null) {
             return new ModelAndView("Login");
@@ -57,7 +58,7 @@ public class LoginController {
         } else {
             return new ModelAndView("Login");
         }
-    }
+    }*/
 
     @GetMapping("/logout")
     public ModelAndView logout(HttpSession session) {

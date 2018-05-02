@@ -5,6 +5,8 @@
  */
 package com.ProjetoDrone.ModuloGerenciamento.Controller;
 
+import com.ProjetoDrone.ModuloGerenciamento.Repository.FuncionarioRepository;
+import com.ProjetoDrone.ModuloGerenciamento.Classes.Funcionario.Funcionario;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,31 +23,32 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author Rafael Rodrigues
  */
 
-/*@Controller
+@Controller
 @RequestMapping("/cadastrar/cliente")
 public class CadastroFuncionarioController {
 
     @Autowired
-    private ClienteRepository repository;
+    private FuncionarioRepository repository;
     
     // O /cadastro é o redirecionamento para a tela de formulario de cadastro de cliente
     // retorno um html CADASTRO e add um objeto que o html irá preencher pelos metodos definidos.
+    
     @GetMapping("/cadastro")
-    public ModelAndView cadastroCli(){
-        return new ModelAndView ("Cadastro").addObject("cliente", new Cliente());
+    public ModelAndView cadastroFunc(){
+        return new ModelAndView ("Cadastro").addObject("funcionario", new Funcionario());
     }
     
     
     @PostMapping("/salvar")
-    public ModelAndView realizarCadastro(@ModelAttribute("cliente") @Valid Cliente cliente,BindingResult bindingResult,
+    public ModelAndView realizarCadastro(@ModelAttribute("cliente") @Valid Funcionario funcionario,BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
             return new ModelAndView("/cadastro");
         }
 
-        repository.incluir(cliente);
+        repository.incluir(funcionario);
 
         return new ModelAndView("redirect:/home/login");
     }    
-}*/
+}
