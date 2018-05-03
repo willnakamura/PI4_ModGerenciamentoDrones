@@ -15,11 +15,11 @@ import javax.validation.constraints.Size;
 public class Login {
 
     @NotNull
-    @Size(min = 1, max = 45)
+    @Size(min = 1, max = 45, message="Usuário e/ou senha incorreto.")
     private String user;
 
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 20, message="Usuário e/ou senha incorreto.")
     private String senha;
 
     public Login() {
@@ -31,7 +31,7 @@ public class Login {
     }
 
     public String getUser() {
-        return user.trim();
+        return user;
     }
 
     public void setUser(String user) {
@@ -39,7 +39,7 @@ public class Login {
     }
 
     public String getSenha() {
-        return senha.trim();
+        return senha;
     }
 
     public void setSenha(String senha) {

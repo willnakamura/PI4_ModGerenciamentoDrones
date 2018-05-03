@@ -20,9 +20,9 @@
 
 
     <body>
-        <form class="container" style="
-              width: 330px;
-              height: 545px;">
+        <div class="container" style="
+             width: 330px;
+             height: 545px;">
 
             <div class="row">
                 <div class="col-12">
@@ -35,24 +35,30 @@
             </div>
 
             <div class="row" id="login">
+
                 <div class="col-12">
-                    <div class="form-label-group">
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-                        <label for="inputEmail">Email address</label>
-                    </div>
+                    <form th:action="@{/login/logando}" th:object="${login}" method="post">
+                        <div class="form-label-group">
+                            <input type="email" id="inputEmail" name="user" th:field="*{user}" class="form-control" placeholder="Email address">
+                            <label for="inputEmail">Email address</label>
+                            <p th:if="${#fields.hasErrors('user')}" th:errors="*{user}">user incorreto</p>
+                        </div>
 
-                    <div class="form-label-group">
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-                        <label for="inputPassword">Password</label>
-                    </div>
+                        <div class="form-label-group">
+                            <input type="password"  id="inputPassword" name="senha" th:field="*{senha}" class="form-control" placeholder="Password">
+                            <label for="inputPassword">Password</label>
+                            <p th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}">user incorreto</p>
+                        </div>
 
-                    <div class="checkbox mb-3">
-                        <label>
-                            <input type="checkbox" value="remember-me"> Remember me
-                        </label>
-                    </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    </form>
                 </div>
+
             </div>
 
             <div class="row" style="margin: 60px;">
@@ -61,7 +67,7 @@
                 </div>
             </div>
 
-        </form>
+        </div>
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

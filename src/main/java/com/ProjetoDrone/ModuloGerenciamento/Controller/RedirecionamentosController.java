@@ -18,10 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/home")
 public class RedirecionamentosController {
 
-    @GetMapping("/login")
-    public ModelAndView login() {
-        return new ModelAndView("index");
-    }
 
     @GetMapping("/paginaInicial")
     public ModelAndView home() {

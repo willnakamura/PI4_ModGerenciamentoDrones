@@ -30,40 +30,44 @@ public class LoginController {
 
     @Autowired
     private FuncionarioRepository repository;
+
     //
     @GetMapping("/telaLogin")
     public ModelAndView login() {
-        return new ModelAndView("Login").addObject("login", new Login());
+        return new ModelAndView("index").addObject("login", new Login());
     }
 
-    /*@PostMapping("/logando")
+    @PostMapping("/logando")
     public ModelAndView logando(@ModelAttribute("login") @Valid Login login, BindingResult bindingResult,
             RedirectAttributes redirectAttributes, HttpSession session) {
 
-        if (bindingResult.hasErrors()) {
-            return new ModelAndView("Login");
-        }
-
+        /*  if (bindingResult.hasErrors()) {
+            return new ModelAndView("index");
+        }*/
         Funcionario func = new Funcionario();
 
-        func = repository.logar
+        func = repository.logar(login.getUser());
 
-        if (cli == null) {
-            return new ModelAndView("Login");
+        if (func == null) {
+            return new ModelAndView("index");
         }
 
-        if (cli.getEmail().equals(login.getUser()) && cli.getSenha().equals(login.getSenha())) {
-            session.setAttribute("usuario", cli);
+        if (func.getEmail().equals(login.getUser()) && func.getSenha().equals(login.getSenha())) {
+            session.setAttribute("usuario", func);
             return new ModelAndView("redirect:/home/paginaInicial");
+
         } else {
-            return new ModelAndView("Login");
+            // if (bindingResult.hasErrors()) {
+            return new ModelAndView("index");
+            //}
         }
-    }*/
+        //return null;
+    }
 
     @GetMapping("/logout")
     public ModelAndView logout(HttpSession session) {
         session.invalidate();
-        return new ModelAndView("Home");
+        return new ModelAndView("index");
     }
 
 }

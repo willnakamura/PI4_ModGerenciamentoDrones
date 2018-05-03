@@ -12,11 +12,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Josué
  */
+@Repository
 public class FuncionarioRepository implements FuncionarioService {
 
     @PersistenceContext
@@ -67,5 +69,15 @@ public class FuncionarioRepository implements FuncionarioService {
     public void remover(long idFuncionario) {
         Funcionario f = entityManager.find(Funcionario.class, idFuncionario);
         entityManager.remove(f);
+    }
+
+    @Override
+    public Funcionario logar(String email) {
+        Query query = entityManager.createQuery(
+                "SELECT DISTINCT f FROM Funcionario f "
+                + "WHERE f.email = :mail");
+        query.setParameter("mail", email);
+        Funcionario resultado = (Funcionario) query.getSingleResult();
+        return resultado;
     }
 }

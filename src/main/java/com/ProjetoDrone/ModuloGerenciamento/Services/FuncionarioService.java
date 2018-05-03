@@ -24,4 +24,6 @@ public interface FuncionarioService extends Serializable {
     public void alterar(Funcionario f);
 
     public void remover(long idProduto);
+    
+    public Funcionario logar (String email);
 }

@@ -40,7 +40,7 @@ public class CadastroFuncionarioController {
     
     
     @PostMapping("/salvar")
-    public ModelAndView realizarCadastro(@ModelAttribute("cliente") @Valid Funcionario funcionario,BindingResult bindingResult,
+    public ModelAndView realizarCadastro(@ModelAttribute("funcionario") @Valid Funcionario funcionario,BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
