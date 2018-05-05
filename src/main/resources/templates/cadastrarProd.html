@@ -11,6 +11,11 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
         <style type="text/css">
+            .row{
+                position: absolute; 
+                left: 250px; /* posiciona a 90px para a esquerda */ 
+                top: 210px; /* posiciona a 70px para baixo */
+            }
         </style>
 
     </head>
@@ -29,17 +34,18 @@
 
             <div class="container">
                 <!-- Example row of columns -->
-                <div class="row">
+                <div class="row" >
                     <div class="col-12">
-                        <div class="form-group"> 
+                        <div class="form-group" style="width: 500px"> 
                             <label for="nome" class="col-sm-3 control-label">Nome</label> 
                             <div class="col-12"> 
-                                <input type="text" name="nome" id="nome" maxlength="25" class="form-control" placeholder="Nome do produto"><br>
+                                <input type="text" name="nome" id="nome" maxlength="25" class="form-control" placeholder="Nome do produto">
                             </div>
 
                             <label for="descricao" class="col-sm-3 control-label">Descrição</label> 
                             <div class="col-12"> 
-                                <input type="text" name="descricao" id="descricao" class="form-control" placeholder="Descrição do produto"><br>
+                                <textarea name="descricao" rows="4" cols="500" id="descricao" class="form-control">
+                                </textarea>
                             </div>
 
                             <label for="fabricante" class="col-sm-3 control-label">Fabricante</label> 
@@ -57,12 +63,12 @@
                                 <input type="number" class="input-block-level" autocomplete="off" maxlength="6" pattern="\d{6}" title="Peso do produto" required=""><br>
                             </div>
 
-                            <label for="velocidade" class="col-sm-3 control-label">Velocidade máx.</label>
+                            <label for="velocidade" class="col-sm-4 control-label">Velocidade máx.</label>
                             <div class="col-12">
                                 <input type="number" class="input-block-level" autocomplete="off" maxlength="3" pattern="\d{3}" title="Velocidade máx." required=""> K/h<br>
                             </div>
 
-                            <label for="durBateria" class="col-sm-3 control-label">Duração da bateria</label>
+                            <label for="durBateria" class="col-sm-4 control-label">Duração da bateria</label>
                             <div class="col-12">
                                 <input type="number" class="input-block-level" autocomplete="off" maxlength="6" pattern="\d{6}" title="Duração da bateria" required=""> mAh<br>
                             </div>
@@ -72,17 +78,11 @@
                                 <input type="radio" name="camera" id="cameraSim" value="1" checked> Sim<br>
                                 <input type="radio" name="camera" id="cameraNao" value="0"> Não<br>
                             </div>
-
-
+                            <button type="button" class="btn btn-secondary" style="margin-top: 15px">Cadastrar</button>  
 
                         </div>
-
-
-
                     </div>
-
                 </div>
-
             </div>
             <!-- /container -->
 
