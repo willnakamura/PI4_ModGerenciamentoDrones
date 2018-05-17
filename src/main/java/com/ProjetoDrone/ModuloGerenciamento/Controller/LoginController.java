@@ -45,8 +45,12 @@ public class LoginController {
             return new ModelAndView("index");
         }*/
         Funcionario func = new Funcionario();
-
-        func = repository.logar(login.getUser());
+        try {
+            func = repository.logar(login.getUser());
+        } catch (Exception e) {
+            return new ModelAndView("index");
+        }
+        
 
         if (func == null) {
             return new ModelAndView("index");
