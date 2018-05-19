@@ -11,11 +11,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
         <style type="text/css">
-            .row{
-                position: absolute; 
-                left: 250px; /* posiciona a 90px para a esquerda */ 
-                top: 210px; /* posiciona a 70px para baixo */
-            }
         </style>
 
     </head>
@@ -26,8 +21,8 @@
 
             <!-- Main jumbotron for a primary marketing message or call to action -->
             <div class="jumbotron">
-                <div class="container">
-                    <h2 class="display-4" style="font-size:3em;" >Cadastro Produto</h2>
+                <div class="">
+                    <h2 class="display-4 mt-2" >Cadastro Produto</h2>
 
                 </div>
             </div>
@@ -35,62 +30,78 @@
             <div class="container">
                 <!-- Example row of columns -->
                 <div class="row" >
-                    <div class="col-12">
-                        <div class="form-group" style="width: 500px"> 
-                            <label for="nome" class="col-sm-3 control-label">Nome</label> 
-                            <div class="col-12"> 
-                                <input type="text" name="nome" id="nome" maxlength="25" class="form-control" placeholder="Nome do produto">
+                    <div class="col-md-12">
+                        <div class="form-group"> 
+
+                            <div class="input-group col-md-6">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="">Nome</span>
+                                </div>
+                                <input type="text" class="form-control">
                             </div>
 
-                            <label for="descricao" class="col-sm-3 control-label">Descrição</label> 
-                            <div class="col-12"> 
-                                <textarea name="descricao" rows="4" cols="500" id="descricao" class="form-control">
-                                </textarea>
+                            <div class="form-group col-md-6" style="margin-top: 10px;">
+                                <label for="exampleFormControlTextarea2">Descrição</label>
+                                <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
                             </div>
 
-                            <label for="fabricante" class="col-sm-3 control-label">Fabricante</label> 
-                            <div class="col-12"> 
-                                <input type="text" name="fabricante" id="fabricante" class="form-control" placeholder="Fabricante do produto"><br>
+                            <div class="input-group col-md-6">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="">Fabricante</span>
+                                </div>
+                                <input type="text" class="form-control">
                             </div>
 
-                            <label for="qnt" class="col-sm-3 control-label">Quantidade</label>
-                            <div class="col-12">
-                                <input type="number" class="input-block-level" autocomplete="off" maxlength="4" pattern="\d{4}" title="Quantidade em estoque" required="">
+                            <div class="input-group col-md-6" style="margin-top: 10px;">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="">Link</span>
+                                </div>
+                                <input type="text" class="form-control">
                             </div>
 
-                            <label for="peso" class="col-sm-3 control-label">Peso</label>
-                            <div class="col-12">
-                                <input type="number" class="input-block-level" autocomplete="off" maxlength="6" pattern="\d{6}" title="Peso do produto" required=""><br>
+
+                            <div class="row" style="margin-left: 0px; margin-top: 10px;">
+                                <div class="col-md-2 mb-3">
+                                    <label for="country">Quantidade</label>
+                                    <input type="number" class="form-control">
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="state">Preço</label>
+                                    <input type="number" class="form-control">
+                                </div>  
                             </div>
 
-                            <label for="velocidade" class="col-sm-4 control-label">Velocidade máx.</label>
-                            <div class="col-12">
-                                <input type="number" class="input-block-level" autocomplete="off" maxlength="3" pattern="\d{3}" title="Velocidade máx." required=""> K/h<br>
+                            <div class="row" style="margin-left: 0px; ">
+                                <div class="col-md-2 mb-3">
+                                    <label for="country">Peso</label>
+                                    <input type="number" class="form-control">
+                                </div>
+                                <div class="col-md-sm-2 mb-3">
+                                    <label for="state">Velocidade máx.</label>
+                                    <input type="number" class="form-control">
+                                </div>  
                             </div>
 
-                            <label for="durBateria" class="col-sm-4 control-label">Duração da bateria</label>
-                            <div class="col-12">
-                                <input type="number" class="input-block-level" autocomplete="off" maxlength="6" pattern="\d{6}" title="Duração da bateria" required=""> mAh<br>
-                            </div>
-
-                            <label class="col-sm-3 control-label" for="camera">Câmera</label>
-                            <div class="col-12"> 
-                                <input type="radio" name="camera" id="cameraSim" value="1" checked> Sim<br>
-                                <input type="radio" name="camera" id="cameraNao" value="0"> Não<br>
-                            </div>
-                            <button type="button" class="btn btn-secondary" style="margin-top: 15px">Cadastrar</button>  
+                            <div class="row" style="margin-left: 0px; ">
+                                <div class="col-md-2 mb-3">
+                                    <label for="country">Duração da bateria</label>
+                                    <input type="number" class="form-control">
+                                </div>
+                                <div class="col-md-sm-2 mb-3">
+                                    <label for="state">Câmera</label>
+                                    <div class="col-12"> 
+                                        <input type="radio" name="camera" id="cameraSim" value="1" checked> Sim<br>
+                                        <input type="radio" name="camera" id="cameraNao" value="0"> Não<br>
+                                    </div>
+                                </div>  
+                            </div>                            
+                            <button type="button" class="btn btn-secondary" style="margin-left: 12px;">Cadastrar</button> 
 
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- /container -->
-
         </main>
-
-        <footer class="container">
-            <p>&copy; Leon's Dev - 2018</p>
-        </footer>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
