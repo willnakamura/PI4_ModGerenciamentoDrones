@@ -19,7 +19,6 @@
 
         <main role="main" layout:fragment="conteudo">
 
-            <!-- Main jumbotron for a primary marketing message or call to action -->
             <div class="jumbotron">
                 <div class="">
                     <h2 class="display-4 mt-2" >Cadastro Produto</h2>
@@ -32,70 +31,71 @@
                 <div class="row" >
                     <div class="col-md-12">
                         <div class="form-group"> 
-
-                            <div class="input-group col-md-6">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="">Nome</span>
-                                </div>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-md-6" style="margin-top: 10px;">
-                                <label for="exampleFormControlTextarea2">Descrição</label>
-                                <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
-                            </div>
-
-                            <div class="input-group col-md-6">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="">Fabricante</span>
-                                </div>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="input-group col-md-6" style="margin-top: 10px;">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="">Link</span>
-                                </div>
-                                <input type="text" class="form-control">
-                            </div>
-
-
-                            <div class="row" style="margin-left: 0px; margin-top: 10px;">
-                                <div class="col-md-2 mb-3">
-                                    <label for="country">Quantidade</label>
-                                    <input type="number" class="form-control">
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <label for="state">Preço</label>
-                                    <input type="number" class="form-control">
-                                </div>  
-                            </div>
-
-                            <div class="row" style="margin-left: 0px; ">
-                                <div class="col-md-2 mb-3">
-                                    <label for="country">Peso</label>
-                                    <input type="number" class="form-control">
-                                </div>
-                                <div class="col-md-sm-2 mb-3">
-                                    <label for="state">Velocidade máx.</label>
-                                    <input type="number" class="form-control">
-                                </div>  
-                            </div>
-
-                            <div class="row" style="margin-left: 0px; ">
-                                <div class="col-md-2 mb-3">
-                                    <label for="country">Duração da bateria</label>
-                                    <input type="number" class="form-control">
-                                </div>
-                                <div class="col-md-sm-2 mb-3">
-                                    <label for="state">Câmera</label>
-                                    <div class="col-12"> 
-                                        <input type="radio" name="camera" id="cameraSim" value="1" checked> Sim<br>
-                                        <input type="radio" name="camera" id="cameraNao" value="0"> Não<br>
+                            <form th:action="@{/cadastrar/produto/salvar}" th:object="${produto}" method="post">
+                                <div class="input-group col-md-6">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">Nome</span>
                                     </div>
-                                </div>  
-                            </div>                            
-                            <button type="button" class="btn btn-secondary" style="margin-left: 12px;">Cadastrar</button> 
+                                    <input type="text" th:field="*{nome}" class="form-control">
+                                </div>
+
+                                <div class="form-group col-md-6" style="margin-top: 10px;">
+                                    <label for="exampleFormControlTextarea2">Descrição</label>
+                                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" th:field="*{descricao}" rows="3"></textarea>
+                                </div>
+
+                                <div class="input-group col-md-6">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">Fabricante</span>
+                                    </div>
+                                    <input type="text" th:field="*{fabricante}" class="form-control">
+                                </div>
+
+                                <div class="input-group col-md-6" style="margin-top: 10px;">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">Link</span>
+                                    </div>
+                                    <input type="text" th:field="*{url}" class="form-control">
+                                </div>
+
+
+                                <div class="row" style="margin-left: 0px; margin-top: 10px;">
+                                    <div class="col-md-2 mb-3">
+                                        <label for="country">Quantidade</label>
+                                        <input type="number" th:field="*{estoque}" class="form-control">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="state">Preço</label>
+                                        <input type="number" th:field="*{}" class="form-control">
+                                    </div>  
+                                </div>
+
+                                <div class="row" style="margin-left: 0px; ">
+                                    <div class="col-md-2 mb-3">
+                                        <label for="country">Peso</label>
+                                        <input type="number" th:field="*{peso}" class="form-control">
+                                    </div>
+                                    <div class="col-md-sm-2 mb-3">
+                                        <label for="state">Velocidade máx.</label>
+                                        <input type="number" th:field="*{velocidadeMax}" class="form-control">
+                                    </div>  
+                                </div>
+
+                                <div class="row" style="margin-left: 0px; ">
+                                    <div class="col-md-2 mb-3">
+                                        <label for="country">Duração da bateria</label>
+                                        <input type="number" th:field="*{bateriaDuracao}" class="form-control">
+                                    </div>
+                                    <div class="col-md-sm-2 mb-3">
+                                        <label for="state">Câmera</label>
+                                        <div class="col-12"> 
+                                            <input type="radio" name="camera" th:field="*{camera}" id="cameraSim" value="1" checked> Sim<br>
+                                            <input type="radio" name="camera" th:field="*{camera}" id="cameraNao" value="0"> Não<br>
+                                        </div>
+                                    </div>  
+                                </div>                            
+                                <button type="submit" class="btn btn-secondary" style="margin-left: 12px;">Cadastrar</button>
+                            </form>
 
                         </div>
                     </div>

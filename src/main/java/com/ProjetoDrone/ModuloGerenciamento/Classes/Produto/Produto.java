@@ -79,10 +79,16 @@ public class Produto implements Serializable {
     @Column(name = "peso", precision = 3, scale = 2, nullable = false)
     private double peso;
 
+    @NotNull
+    @Size(min = 1, max = 200)
+    @Column(name = "url", length = 200, nullable = false, unique = false)
+    private String imagem_url;
+
     //-------------------------Construtores--------------------
     public Produto() {
     }
 
+    // ??
     public Produto(int velocidadeMax, int bateriaDuracao, int camera, String nome, String descricao, String fabricante, double peso) {
         this.velocidadeMax = velocidadeMax;
         this.bateriaDuracao = bateriaDuracao;
@@ -101,14 +107,6 @@ public class Produto implements Serializable {
     public void setIdProd(Integer idProd) {
         this.idProd = idProd;
     }
-//
-//    public int getPrecoId() {
-//        return precoId;
-//    }
-//
-//    public void setPrecoId(int precoId) {
-//        this.precoId = precoId;
-//    }
 
     public int getVelocidadeMax() {
         return velocidadeMax;
@@ -156,6 +154,14 @@ public class Produto implements Serializable {
 
     public void setFabricante(String fabricante) {
         this.fabricante = fabricante;
+    }
+
+    public String getImagem_url() {
+        return imagem_url;
+    }
+
+    public void setImagem_url(String imagem_url) {
+        this.imagem_url = imagem_url;
     }
 
     public Double getPeso() {

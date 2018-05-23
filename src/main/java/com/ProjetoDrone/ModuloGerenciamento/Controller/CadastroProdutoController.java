@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ProjetoDrone.ModuloGerenciamento.Controller;
 
-import com.ProjetoDrone.ModuloGerenciamento.Repository.FuncionarioRepository;
-import com.ProjetoDrone.ModuloGerenciamento.Classes.Funcionario.Funcionario;
+import com.ProjetoDrone.ModuloGerenciamento.Repository.ProdutoRepository;
+import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Produto;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,28 +14,32 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/cadastrar/funcionario")
-public class CadastroFuncionarioController {
+@RequestMapping("/cadastrar/produto")
+public class CadastroProdutoController {
 
     @Autowired
-    private FuncionarioRepository repository;
+    private ProdutoRepository repository;
 
     @GetMapping("/cadastro")
-    public ModelAndView cadastroFunc() {
-        return new ModelAndView("Cadastro").addObject("funcionario", new Funcionario());
+    public ModelAndView cadastroProd() {
+        return new ModelAndView("Cadastro").addObject("produto", new Produto());
     }
 
     @PostMapping("/salvar")
-    public ModelAndView realizarCadastro(@ModelAttribute("funcionario")
-            @Valid Funcionario funcionario, BindingResult bindingResult,
+    public ModelAndView realizarCadastro(@ModelAttribute("produto")
+            @Valid Produto produto, BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
             return new ModelAndView("/cadastro");
         }
 
-        repository.incluir(funcionario);
+        try {
+            repository.incluir(produto);
+        } catch (Exception e) {
+            return new ModelAndView("Cadastro");
+        }
 
-        return new ModelAndView("redirect:/home/login");
+        return new ModelAndView("redirect:/login/telaLogin");
     }
 }
