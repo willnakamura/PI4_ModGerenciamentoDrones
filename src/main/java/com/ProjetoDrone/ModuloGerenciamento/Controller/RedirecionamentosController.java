@@ -23,11 +23,6 @@ public class RedirecionamentosController {
         return new ModelAndView("home");
     }
 
-    @GetMapping("/cadastroProduto")
-    public ModelAndView cadastrarProd() {
-        return new ModelAndView("cadastrarProd");
-    }
-
     @GetMapping("/consultarProduto")
     public ModelAndView consultarProd() {
         return new ModelAndView("consultarProd");

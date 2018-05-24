@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -65,8 +66,8 @@ public class Produto implements Serializable {
     private String nome;
     //descrição
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "descricao", length = 100, nullable = false, unique = false)
+    @Size(min = 1, max = 1000)
+    @Column(name = "descricao", length = 1000, nullable = false, unique = false)
     private String descricao;
     //fabricante 
     @NotNull
@@ -78,6 +79,11 @@ public class Produto implements Serializable {
     @Digits(integer = 3, fraction = 0)
     @Column(name = "peso", precision = 3, scale = 2, nullable = false)
     private double peso;
+
+    @NotNull
+    @Digits(integer = 6, fraction = 2)
+    @Transient
+    private double preco;
 
     @NotNull
     @Size(min = 1, max = 200)
@@ -100,12 +106,38 @@ public class Produto implements Serializable {
     }
 
     //--------------------Fim dos construtores------------------
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+       // this.precos.setPreco(preco);
+    }
+    
     public Integer getIdProd() {
         return idProd;
     }
 
     public void setIdProd(Integer idProd) {
         this.idProd = idProd;
+    }
+
+    public int getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(int estoq) {
+        this.estoque = estoq;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double pes) {
+        this.peso = pes;
     }
 
     public int getVelocidadeMax() {
@@ -162,14 +194,6 @@ public class Produto implements Serializable {
 
     public void setImagem_url(String imagem_url) {
         this.imagem_url = imagem_url;
-    }
-
-    public Double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(Double peso) {
-        this.peso = peso;
     }
 
     public Precos getPrecos() {

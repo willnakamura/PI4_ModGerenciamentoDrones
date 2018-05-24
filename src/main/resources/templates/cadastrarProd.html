@@ -37,11 +37,15 @@
                                         <span class="input-group-text" id="">Nome</span>
                                     </div>
                                     <input type="text" th:field="*{nome}" class="form-control">
+                                    <p class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">name incorreto
+                                    </p>
                                 </div>
 
                                 <div class="form-group col-md-6" style="margin-top: 10px;">
                                     <label for="exampleFormControlTextarea2">Descrição</label>
                                     <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" th:field="*{descricao}" rows="3"></textarea>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}">descricao incorreto
+                                    </p>
                                 </div>
 
                                 <div class="input-group col-md-6">
@@ -49,13 +53,17 @@
                                         <span class="input-group-text" id="">Fabricante</span>
                                     </div>
                                     <input type="text" th:field="*{fabricante}" class="form-control">
+                                    <p class="text-danger" th:if="${#fields.hasErrors('fabricante')}" th:errors="*{fabricante}">fabricante incorreto
+                                    </p>
                                 </div>
 
                                 <div class="input-group col-md-6" style="margin-top: 10px;">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="">Link</span>
                                     </div>
-                                    <input type="text" th:field="*{url}" class="form-control">
+                                    <input type="text" th:field="*{imagem_url}" class="form-control">
+                                    <p class="text-danger" th:if="${#fields.hasErrors('imagem_url')}" th:errors="*{imagem_url}">Imagem incorreto
+                                    </p>
                                 </div>
 
 
@@ -63,10 +71,14 @@
                                     <div class="col-md-2 mb-3">
                                         <label for="country">Quantidade</label>
                                         <input type="number" th:field="*{estoque}" class="form-control">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('estoque')}" th:errors="*{estoque}">name incorreto
+                                        </p>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="state">Preço</label>
-                                        <input type="number" th:field="*{}" class="form-control">
+                                        <input type="number" th:field="*{preco}" class="form-control">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}">name incorreto
+                                        </p>
                                     </div>  
                                 </div>
 
@@ -74,10 +86,14 @@
                                     <div class="col-md-2 mb-3">
                                         <label for="country">Peso</label>
                                         <input type="number" th:field="*{peso}" class="form-control">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('peso')}" th:errors="*{peso}">name incorreto
+                                        </p>
                                     </div>
                                     <div class="col-md-sm-2 mb-3">
                                         <label for="state">Velocidade máx.</label>
                                         <input type="number" th:field="*{velocidadeMax}" class="form-control">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('velocidadeMax')}" th:errors="*{velocidadeMax}">name incorreto
+                                        </p>
                                     </div>  
                                 </div>
 
@@ -85,12 +101,16 @@
                                     <div class="col-md-2 mb-3">
                                         <label for="country">Duração da bateria</label>
                                         <input type="number" th:field="*{bateriaDuracao}" class="form-control">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('bateriaDuracao')}" th:errors="*{bateriaDuracao}">name incorreto
+                                        </p>
                                     </div>
                                     <div class="col-md-sm-2 mb-3">
                                         <label for="state">Câmera</label>
                                         <div class="col-12"> 
                                             <input type="radio" name="camera" th:field="*{camera}" id="cameraSim" value="1" checked> Sim<br>
                                             <input type="radio" name="camera" th:field="*{camera}" id="cameraNao" value="0"> Não<br>
+                                            <p class="text-danger" th:if="${#fields.hasErrors('camera')}" th:errors="*{camera}">name incorreto
+                                            </p>
                                         </div>
                                     </div>  
                                 </div>                            

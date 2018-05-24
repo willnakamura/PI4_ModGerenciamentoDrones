@@ -1,5 +1,6 @@
 package com.ProjetoDrone.ModuloGerenciamento.Controller;
 
+import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Precos;
 import com.ProjetoDrone.ModuloGerenciamento.Repository.ProdutoRepository;
 import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Produto;
 import javax.validation.Valid;
@@ -22,7 +23,7 @@ public class CadastroProdutoController {
 
     @GetMapping("/cadastro")
     public ModelAndView cadastroProd() {
-        return new ModelAndView("Cadastro").addObject("produto", new Produto());
+        return new ModelAndView("cadastrarProd").addObject("produto", new Produto());
     }
 
     @PostMapping("/salvar")
@@ -31,15 +32,20 @@ public class CadastroProdutoController {
             RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("/cadastro");
+            return new ModelAndView("cadastrarProd");
         }
 
+        Precos preco = new Precos();
+        preco.setPreco(produto.getPreco());
+        
+        produto.setPrecos(preco);
+        
         try {
             repository.incluir(produto);
         } catch (Exception e) {
-            return new ModelAndView("Cadastro");
+            return new ModelAndView("cadastrarProd");
         }
 
-        return new ModelAndView("redirect:/login/telaLogin");
+        return new ModelAndView("redirect:/home/paginaInicial");
     }
 }
