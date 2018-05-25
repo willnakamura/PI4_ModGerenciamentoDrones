@@ -20,7 +20,7 @@ public interface ProdutoService extends Serializable {
 
     public Produto obter(long idProduto);
     
-    public Produto porNome(String nome);
+    public List<Produto> porNome(String nome);
 
     public void incluir(Produto p);
 
