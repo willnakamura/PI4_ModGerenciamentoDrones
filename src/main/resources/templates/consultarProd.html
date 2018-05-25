@@ -44,24 +44,27 @@
                             </tr>
                         </thead>
                         <tbody>
+
                             <tr>
                                 <th scope="row">1</th>
                                 <td>Mark</td>
                                 <td>Otto</td>
                                 <td>@mdo</td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
+
+                       <!-- <table th:object="${userList}" id="userTable" border="1">
+                            <tr th:each="user :${userList}">
+                                <td  th:text="${user.getName()}"></td>
+                                <td  th:text="${user.getEmail()}"></td>
                             </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
+                        </table> -->
+                        
+                        <!-- <table>
+                            <tr th:each="survey : ${survey}">
+                            <td th:text="${survey}">1</td>
                             </tr>
+                         </table> -->
+                        
                         </tbody>
                     </table>
                 </div>
