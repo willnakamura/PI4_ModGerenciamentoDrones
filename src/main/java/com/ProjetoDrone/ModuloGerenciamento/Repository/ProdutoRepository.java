@@ -43,6 +43,16 @@ public class ProdutoRepository implements ProdutoService {
     }
 
     @Override
+    public Produto porNome(String nome) {
+        Query query = entityManager.createQuery(
+                "SELECT DISTINCT p FROM Produto p "
+                + "WHERE p.nome = :nome");
+        query.setParameter("nome", nome);
+        Produto resultado = (Produto) query.getSingleResult();
+        return resultado;
+    }
+
+    @Override
     @Transactional
     public void incluir(Produto p) {
         if (p.getIdProd() == null) {

@@ -19,6 +19,8 @@ public interface ProdutoService extends Serializable {
     public List<Produto> listar(int offset, int quantidade);
 
     public Produto obter(long idProduto);
+    
+    public Produto porNome(String nome);
 
     public void incluir(Produto p);
 
