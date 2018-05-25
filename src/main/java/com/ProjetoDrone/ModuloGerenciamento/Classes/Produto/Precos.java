@@ -6,6 +6,7 @@
 package com.ProjetoDrone.ModuloGerenciamento.Classes.Produto;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -31,10 +32,10 @@ import javax.validation.constraints.NotNull;
 public class Precos implements Serializable {
 
     @OneToMany(mappedBy = "precos", fetch = FetchType.LAZY,
-          cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     //@JoinColumn(name = "preco_id", nullable = false)
     private Set<Produto> produto;
-    
+
     @Id
     @Column(name = "preco_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,7 +60,6 @@ public class Precos implements Serializable {
 //    @NotNull
 //    @Column(name = "alterado_por")
 //    private int AlteradoPor = func.getIdFunc();
-
     @Digits(integer = 6, fraction = 2)
     @Column(name = "preco", precision = 6, scale = 2, nullable = false)
     private double preco;
@@ -105,6 +105,13 @@ public class Precos implements Serializable {
         return preco;
     }
 
+    public String getPrecoFormatado() {
+        String precoFormatado;
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        precoFormatado = nf.format(preco);
+        return precoFormatado;
+    }
+
     public void setPreco(double preco) {
         this.preco = preco;
     }
@@ -120,5 +127,5 @@ public class Precos implements Serializable {
     public void setProduto(Set<Produto> produto) {
         this.produto = produto;
     }
-    
+
 }

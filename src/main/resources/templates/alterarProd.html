@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html lang="en" layout:decorate="~{modelo}">
+    <head>
+        <meta charset="UTF-8">
+        <title>Modulo ADM</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <style type="text/css">
+        </style>
+
+    </head>
+
+    <body>
+
+        <main role="main" layout:fragment="conteudo">
+
+            <div class="jumbotron">
+                <div class="">
+                    <h2 class="display-4 mt-2" >Alterar Produto</h2>
+
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Example row of columns -->
+                <div class="row" >
+                    <div class="col-md-12">
+                        <div class="form-group"> 
+                            <form th:action="@{/cadastro}" th:object="${produto}" method="post">
+                                <div class="input-group col-md-6">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">Nome</span>
+                                    </div>
+                                    <input type="text" th:field="*{nome}" class="form-control">
+                                    <p class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">name incorreto
+                                    </p>
+                                </div>
+
+                                <div class="form-group col-md-6" style="margin-top: 10px;">
+                                    <label for="exampleFormControlTextarea2">Descrição</label>
+                                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" th:field="*{descricao}" rows="3"></textarea>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}">descricao incorreto
+                                    </p>
+                                </div>
+
+                                <div class="input-group col-md-6">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">Fabricante</span>
+                                    </div>
+                                    <input type="text" th:field="*{fabricante}" class="form-control">
+                                    <p class="text-danger" th:if="${#fields.hasErrors('fabricante')}" th:errors="*{fabricante}">fabricante incorreto
+                                    </p>
+                                </div>
+
+                                <div class="input-group col-md-6" style="margin-top: 10px;">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">Link</span>
+                                    </div>
+                                    <input type="text" th:field="*{imagem_url}" class="form-control">
+                                    <p class="text-danger" th:if="${#fields.hasErrors('imagem_url')}" th:errors="*{imagem_url}">Imagem incorreto
+                                    </p>
+                                </div>
+
+
+                                <div class="row" style="margin-left: 0px; margin-top: 10px;">
+                                    <div class="col-md-2 mb-3">
+                                        <label for="country">Quantidade</label>
+                                        <input type="number" th:field="*{estoque}" class="form-control">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('estoque')}" th:errors="*{estoque}">name incorreto
+                                        </p>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="state">Preço</label>
+                                        <input type="number" th:field="*{preco}" class="form-control">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}">name incorreto
+                                        </p>
+                                    </div>  
+                                </div>
+
+                                <div class="row" style="margin-left: 0px; ">
+                                    <div class="col-md-2 mb-3">
+                                        <label for="country">Peso</label>
+                                        <input type="number" th:field="*{peso}" class="form-control">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('peso')}" th:errors="*{peso}">name incorreto
+                                        </p>
+                                    </div>
+                                    <div class="col-md-sm-2 mb-3">
+                                        <label for="state">Velocidade máx.</label>
+                                        <input type="number" th:field="*{velocidadeMax}" class="form-control">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('velocidadeMax')}" th:errors="*{velocidadeMax}">name incorreto
+                                        </p>
+                                    </div>  
+                                </div>
+
+                                <div class="row" style="margin-left: 0px; ">
+                                    <div class="col-md-2 mb-3">
+                                        <label for="country">Duração da bateria</label>
+                                        <input type="number" th:field="*{bateriaDuracao}" class="form-control">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('bateriaDuracao')}" th:errors="*{bateriaDuracao}">name incorreto
+                                        </p>
+                                    </div>
+                                    <div class="col-md-sm-2 mb-3">
+                                        <label for="state">Câmera</label>
+                                        <div class="col-12"> 
+                                            <input type="radio" name="camera" th:field="*{camera}" id="cameraSim" value="1" checked> Sim<br>
+                                            <input type="radio" name="camera" th:field="*{camera}" id="cameraNao" value="0"> Não<br>
+                                            <p class="text-danger" th:if="${#fields.hasErrors('camera')}" th:errors="*{camera}">name incorreto
+                                            </p>
+                                        </div>
+                                    </div>  
+                                </div>                            
+                                <button type="submit" class="btn btn-secondary" style="margin-left: 12px;">Cadastrar</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    </body>
+
+</html>
