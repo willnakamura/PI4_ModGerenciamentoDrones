@@ -4,8 +4,8 @@ import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Precos;
 import com.ProjetoDrone.ModuloGerenciamento.Repository.ProdutoRepository;
 import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Produto;
 import com.ProjetoDrone.ModuloGerenciamento.Repository.PrecosRepository;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +29,11 @@ public class CadastroProdutoController {
 
     @GetMapping("/cadastro")
     public ModelAndView cadastroProd(HttpSession sessao) {
-        
-        List<Precos> listPrecos = precosRepo.listar();
-        
-                
+
+        List<Precos> listPrecos = new ArrayList<>();
+        listPrecos = precosRepo.listar();
+
+        sessao.setAttribute("listPrecos", listPrecos);
         return new ModelAndView("cadastrarProd").addObject("produto", new Produto());
     }
 
@@ -49,8 +50,7 @@ public class CadastroProdutoController {
         preco.setPreco(produto.getPreco());
         //preco.setProduto(produto);
         produto.setPrecos(preco);
-        
-        
+
         try {
             repository.incluir(produto);
         } catch (Exception e) {
@@ -68,18 +68,18 @@ public class CadastroProdutoController {
     }
 
     @PostMapping("/alterar")
-    public ModelAndView alterarProduto (@ModelAttribute("produto") @Valid Produto produto, BindingResult bindingResult,
-            RedirectAttributes redirectAttributes){
+    public ModelAndView alterarProduto(@ModelAttribute("produto") @Valid Produto produto, BindingResult bindingResult,
+            RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("alterarProd");
         }
-        
-        try{
+
+        try {
             repository.alterar(produto);
-        }catch(Exception e){
-            return new ModelAndView ("alterarProd");
+        } catch (Exception e) {
+            return new ModelAndView("alterarProd");
         }
-        
-        return new ModelAndView ("consultarProd");
+
+        return new ModelAndView("consultarProd");
     }
 }

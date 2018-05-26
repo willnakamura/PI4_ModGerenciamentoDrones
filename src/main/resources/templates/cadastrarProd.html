@@ -82,19 +82,15 @@
                                         </p>
                                     </div>  
                                 </div>
-                                
 
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Selecione preço
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#"></a>
-                                        <a class="dropdown-item" href="#"></a>
-                                        <a class="dropdown-item" href="#"></a>
-                                    </div>
+
+                                <div class="form-group blu-margin" th:each="precos :${session.listPrecos}">
+                                    <select class="form-control" id="dropOperator">
+                                        <option value="0" th:text="Selecione preço" ></option>
+                                        <option th:value="${precos.IdPreco}" th:text="${precos.precoFormatado}"></option>
+                                    </select>
                                 </div>
-                                
+
 
                                 <div class="row" style="margin-left: 0px; ">
                                     <div class="col-md-2 mb-3">
