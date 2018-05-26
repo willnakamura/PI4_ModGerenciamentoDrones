@@ -5,6 +5,7 @@
  */
 package com.ProjetoDrone.ModuloGerenciamento.Controller;
 
+import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Produto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,6 @@ public class RedirecionamentosController {
 
     @GetMapping("/consultarProduto")
     public ModelAndView consultarProd() {
-        return new ModelAndView("consultarProd");
+        return new ModelAndView("consultarProd").addObject("prod", new Produto());
     }
 }
