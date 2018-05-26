@@ -75,22 +75,14 @@
                                         </p>
                                     </div>
 
-                                    <div class="col-md-3 mb-3">
-                                        <label for="state">Preço</label>
-                                        <input type="number" th:field="*{preco}" class="form-control">
-                                        <p class="text-danger" th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}">name incorreto
-                                        </p>
-                                    </div>  
+                                    <div class="form-group blu-margin col-md-3 mb-3" style="margin-top: 32px;" >
+                                        <select class="form-control" id="dropOperator" th:field="*{idPreco}">
+                                            <option value="0">Selecione preço</option>
+                                            <option th:value="${precos.IdPrrco}" th:text="${precos.precoFormatado}" th:each="precos :${session.listPrecos}"></option>
+                                        </select>
+                                    </div>
+
                                 </div>
-
-
-                                <div class="form-group blu-margin" th:each="precos :${session.listPrecos}">
-                                    <select class="form-control" id="dropOperator">
-                                        <option value="0" th:text="Selecione preço" ></option>
-                                        <option th:value="${precos.IdPreco}" th:text="${precos.precoFormatado}"></option>
-                                    </select>
-                                </div>
-
 
                                 <div class="row" style="margin-left: 0px; ">
                                     <div class="col-md-2 mb-3">

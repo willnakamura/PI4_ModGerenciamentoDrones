@@ -6,6 +6,7 @@
 package com.ProjetoDrone.ModuloGerenciamento.Classes.Produto;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -81,9 +82,8 @@ public class Produto implements Serializable {
     private double peso;
 
     @NotNull
-    @Digits(integer = 6, fraction = 2)
     @Transient
-    private double preco;
+    private long idPreco;
 
     @NotNull
     @Size(min = 1, max = 200)
@@ -106,16 +106,14 @@ public class Produto implements Serializable {
     }
 
     //--------------------Fim dos construtores------------------
-
-    public double getPreco() {
-        return preco;
+    public long getIdPreco() {
+        return idPreco;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
-       // this.precos.setPreco(preco);
+    public void setIdPreco(long idPreco) {
+        this.idPreco = idPreco;
     }
-    
+
     public Integer getIdProd() {
         return idProd;
     }

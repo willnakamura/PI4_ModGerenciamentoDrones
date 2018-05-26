@@ -25,6 +25,7 @@ public class CadastroProdutoController {
 
     @Autowired
     private ProdutoRepository repository;
+    @Autowired
     private PrecosRepository precosRepo;
 
     @GetMapping("/cadastro")
@@ -32,6 +33,7 @@ public class CadastroProdutoController {
 
         List<Precos> listPrecos = new ArrayList<>();
         listPrecos = precosRepo.listar();
+
 
         sessao.setAttribute("listPrecos", listPrecos);
         return new ModelAndView("cadastrarProd").addObject("produto", new Produto());
@@ -45,10 +47,8 @@ public class CadastroProdutoController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("cadastrarProd");
         }
-
-        Precos preco = new Precos();
-        preco.setPreco(produto.getPreco());
-        //preco.setProduto(produto);
+        
+        Precos preco = precosRepo.obter(produto.getIdPreco());
         produto.setPrecos(preco);
 
         try {
