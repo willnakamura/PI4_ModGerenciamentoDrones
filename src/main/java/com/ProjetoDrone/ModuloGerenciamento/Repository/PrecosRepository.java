@@ -26,7 +26,7 @@ public class PrecosRepository implements PrecosService {
     private EntityManager entityManager;
 
     @Override
-    public List<Precos> listar(int offset, int quantidade) {
+    public List<Precos> listar() {
         Query query = entityManager.createQuery(
                 "SELECT DISTINCT p FROM Precos p");
         List<Precos> resultados = query.getResultList();

@@ -3,6 +3,9 @@ package com.ProjetoDrone.ModuloGerenciamento.Controller;
 import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Precos;
 import com.ProjetoDrone.ModuloGerenciamento.Repository.ProdutoRepository;
 import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Produto;
+import com.ProjetoDrone.ModuloGerenciamento.Repository.PrecosRepository;
+import java.util.List;
+import java.util.Set;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +25,14 @@ public class CadastroProdutoController {
 
     @Autowired
     private ProdutoRepository repository;
+    private PrecosRepository precosRepo;
 
     @GetMapping("/cadastro")
-    public ModelAndView cadastroProd() {
+    public ModelAndView cadastroProd(HttpSession sessao) {
+        
+        List<Precos> listPrecos = precosRepo.listar();
+        
+                
         return new ModelAndView("cadastrarProd").addObject("produto", new Produto());
     }
 
@@ -39,9 +47,10 @@ public class CadastroProdutoController {
 
         Precos preco = new Precos();
         preco.setPreco(produto.getPreco());
-
+        //preco.setProduto(produto);
         produto.setPrecos(preco);
-
+        
+        
         try {
             repository.incluir(produto);
         } catch (Exception e) {

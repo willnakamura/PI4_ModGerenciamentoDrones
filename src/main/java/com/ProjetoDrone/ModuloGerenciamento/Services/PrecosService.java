@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface PrecosService extends Serializable {
 
-    public List<Precos> listar(int offset, int quantidade);
+    public List<Precos> listar();
 
     public Precos obter(long idPrecos);
 

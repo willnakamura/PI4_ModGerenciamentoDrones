@@ -5,6 +5,7 @@ package com.ProjetoDrone.ModuloGerenciamento.Repository;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Precos;
 import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Produto;
 import com.ProjetoDrone.ModuloGerenciamento.Services.ProdutoService;
 import java.util.List;

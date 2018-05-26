@@ -74,6 +74,7 @@
                                         <p class="text-danger" th:if="${#fields.hasErrors('estoque')}" th:errors="*{estoque}">name incorreto
                                         </p>
                                     </div>
+
                                     <div class="col-md-3 mb-3">
                                         <label for="state">Preço</label>
                                         <input type="number" th:field="*{preco}" class="form-control">
@@ -81,6 +82,19 @@
                                         </p>
                                     </div>  
                                 </div>
+                                
+
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Selecione preço
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#"></a>
+                                        <a class="dropdown-item" href="#"></a>
+                                        <a class="dropdown-item" href="#"></a>
+                                    </div>
+                                </div>
+                                
 
                                 <div class="row" style="margin-left: 0px; ">
                                     <div class="col-md-2 mb-3">
