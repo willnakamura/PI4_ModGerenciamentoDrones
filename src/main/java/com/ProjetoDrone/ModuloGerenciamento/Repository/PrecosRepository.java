@@ -46,26 +46,22 @@ public class PrecosRepository implements PrecosService {
     @Override
     @Transactional
     public void incluir(Precos p) {
-        for (Produto pr : p.getProduto()) {
             if (p.getIdPrrco() == null) {
                 entityManager.persist(p);
             } else {
                 entityManager.merge(p);
             }
-        }
         entityManager.persist(p);
     }
 
     @Override
     @Transactional
     public void alterar(Precos p) {
-        for (Produto pr : p.getProduto()) {
             if (p.getIdPrrco() == null) {
                 entityManager.persist(p);
             } else {
                 entityManager.merge(p);
             }
-        }
         entityManager.persist(p);
     }
 

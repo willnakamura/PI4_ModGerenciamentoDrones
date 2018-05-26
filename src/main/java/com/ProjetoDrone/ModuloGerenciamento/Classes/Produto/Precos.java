@@ -31,11 +31,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "Precos")
 public class Precos implements Serializable {
 
-    @OneToMany(mappedBy = "precos", fetch = FetchType.LAZY,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    //@JoinColumn(name = "preco_id", nullable = false)
-    private Set<Produto> produto;
-
     @Id
     @Column(name = "preco_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -119,13 +114,4 @@ public class Precos implements Serializable {
     public Date getDataCriacao() {
         return dataCriacao;
     }
-
-    public Set<Produto> getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Set<Produto> produto) {
-        this.produto = produto;
-    }
-
 }
