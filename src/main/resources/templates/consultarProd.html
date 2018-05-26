@@ -28,8 +28,8 @@
                 <!-- Example row of columns -->
                 <div class="row">
                     <div class="col-md-12">
-                        <form class="form-inline">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Nome produto" aria-label="Search">
+                        <form class="form-inline" th:action="@{/consultar/produto}" th:object="${prod}">
+                            <input class="form-control mr-sm-2" type="search" th:field="*{nome}" placeholder="Nome produto" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                         </form>
                     </div>
