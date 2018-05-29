@@ -57,11 +57,11 @@ public class ProdutoRepository implements ProdutoService {
     @Transactional
     public void incluir(Produto p) {
         if (p.getIdProd() == null) {
-            entityManager.persist(p);
+                entityManager.persist(p);
         } else {
             entityManager.merge(p);
         }
-        entityManager.persist(p);
+        //entityManager.persist(p);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class ProdutoRepository implements ProdutoService {
         } else {
             entityManager.merge(p);
         }
-        entityManager.persist(p);
+        //entityManager.persist(p);
     }
 
     @Override
