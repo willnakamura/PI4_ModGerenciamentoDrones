@@ -34,7 +34,6 @@ public class CadastroProdutoController {
         List<Precos> listPrecos = new ArrayList<>();
         listPrecos = precosRepo.listar();
 
-
         sessao.setAttribute("listPrecos", listPrecos);
         return new ModelAndView("cadastrarProd").addObject("produto", new Produto());
     }
@@ -47,7 +46,7 @@ public class CadastroProdutoController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("cadastrarProd");
         }
-        
+
         Precos preco = precosRepo.obter(produto.getIdPreco());
         produto.setPrecos(preco);
 
@@ -61,7 +60,12 @@ public class CadastroProdutoController {
     }
 
     @GetMapping("/{id}")
-    public ModelAndView detalhe(@PathVariable("id") long id, HttpSession sessao) {
+    public ModelAndView obterProd(@PathVariable("id") long id, HttpSession sessao) {
+        List<Precos> listPrecos = new ArrayList<>();
+        listPrecos = precosRepo.listar();
+
+        sessao.setAttribute("listPrecos", listPrecos);
+
         Produto produto = repository.obter(id);
         sessao.setAttribute("prodAlterar", produto);
         return new ModelAndView("alterarProd").addObject("produto", produto);
@@ -70,9 +74,13 @@ public class CadastroProdutoController {
     @PostMapping("/alterar")
     public ModelAndView alterarProduto(@ModelAttribute("produto") @Valid Produto produto, BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
+
         if (bindingResult.hasErrors()) {
             return new ModelAndView("alterarProd");
         }
+
+        Precos preco = precosRepo.obter(produto.getIdPreco());
+        produto.setPrecos(preco);
 
         try {
             repository.alterar(produto);
@@ -80,6 +88,6 @@ public class CadastroProdutoController {
             return new ModelAndView("alterarProd");
         }
 
-        return new ModelAndView("consultarProd");
+        return new ModelAndView("redirect:/home/paginaInicial");
     }
 }

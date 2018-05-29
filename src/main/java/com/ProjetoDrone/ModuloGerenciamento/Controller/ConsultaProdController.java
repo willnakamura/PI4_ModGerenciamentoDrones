@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Produto;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /*
@@ -30,15 +32,16 @@ public class ConsultaProdController {
     ProdutoRepository repository;
 
     @PostMapping
-    public ModelAndView consulta(@PathVariable("nome") String nomeProd, HttpSession sessao) {
+    public ModelAndView consulta(@ModelAttribute("prod")
+            Produto prod, HttpSession sessao) {
         List<Produto> produtos = new ArrayList<Produto>();
 
         try {
-            produtos = repository.porNome(nomeProd);
+            produtos = repository.porNome(prod.getNome());
             sessao.setAttribute("produtos", produtos);
         } catch (Exception e) {
-            return new ModelAndView("consultaProd");
+            return new ModelAndView("consultarProd");
         }
-        return new ModelAndView("consultaProd");
+        return new ModelAndView("consultarProd");
     }
 }

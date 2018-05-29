@@ -36,7 +36,7 @@ public class Produto implements Serializable {
     @Id
     @Column(name = "produto_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idProd;
+    private Long idProd;
 
 //    private int precoId;
     //estoque 
@@ -114,11 +114,11 @@ public class Produto implements Serializable {
         this.idPreco = idPreco;
     }
 
-    public Integer getIdProd() {
+    public Long getIdProd() {
         return idProd;
     }
 
-    public void setIdProd(Integer idProd) {
+    public void setIdProd(Long idProd) {
         this.idProd = idProd;
     }
 
