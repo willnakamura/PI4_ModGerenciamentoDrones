@@ -56,7 +56,7 @@ public class CadastroProdutoController {
             return new ModelAndView("cadastrarProd");
         }
 
-        return new ModelAndView("redirect:/home/paginaInicial");
+        return new ModelAndView("redirect:/home/consultarProduto");
     }
 
     @GetMapping("/{id}")
@@ -88,6 +88,6 @@ public class CadastroProdutoController {
             return new ModelAndView("alterarProd");
         }
 
-        return new ModelAndView("redirect:/home/paginaInicial");
+        return new ModelAndView("redirect:/home/consultarProduto");
     }
 }

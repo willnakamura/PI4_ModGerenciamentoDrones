@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en" layout:decorate="~{modelo}">
+    <head>
+        <meta charset="UTF-8">
+        <title>Modulo ADM</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <style type="text/css">
+        </style>
+
+    </head>
+    <body>
+
+        <main role="main" layout:fragment="conteudo">
+
+            <div class="jumbotron">
+                <div class="">
+                    <h2 class="display-4 mt-2" >Cadastro Preço</h2>
+
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Example row of columns -->
+                <div class="row" >
+                    <div class="col-md-12">
+                        <div class="form-group"> 
+                            <form th:action="@{/cadastrar/preco/salvar}" th:object="${preco}" method="post">
+
+                                <div class="row" style="margin-left: 0px; ">
+                                    <div class="col-md-sm-2 mb-3">
+                                        <label for="state">Novo preço</label>
+                                        <input type="number" th:field="*{preco}" class="form-control">
+                                    </div>  
+                                </div> 
+                                
+                                <button type="submit" class="btn btn-secondary">Cadastrar</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    </body>
+
+</html>

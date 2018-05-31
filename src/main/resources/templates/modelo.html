@@ -38,7 +38,7 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                        <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                            aria-expanded="false">Produto</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
                             <a class="dropdown-item" th:href="@{/cadastrar/produto/cadastro}">Cadastro</a>
@@ -46,10 +46,19 @@
                         </div>
                     </li>
 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">Preço</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" th:href="@{/cadastrar/preco/cadastro}">Cadastro</a>
+                            <a class="dropdown-item" th:href="@{/consultar/preco/consultarPreco}">Consulta</a>
+                        </div>
+                    </li>
+
                 </ul>
-                
-                    <a class="btn btn-outline my-2 my-sm-0" th:href="@{/login/logout}">Logoff</a>
-              
+
+                <a class="btn btn-outline my-2 my-sm-0" th:href="@{/login/logout}">Logoff</a>
+
             </div>
         </nav>
 

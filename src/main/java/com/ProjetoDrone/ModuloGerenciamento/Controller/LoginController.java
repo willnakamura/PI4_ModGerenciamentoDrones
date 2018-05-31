@@ -67,7 +67,6 @@ public class LoginController {
             return new ModelAndView("index");
 
         }
-        //return null;
     }
 
     @GetMapping("/logout")

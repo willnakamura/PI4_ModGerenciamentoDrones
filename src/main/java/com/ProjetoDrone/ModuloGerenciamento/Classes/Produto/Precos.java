@@ -8,15 +8,11 @@ package com.ProjetoDrone.ModuloGerenciamento.Classes.Produto;
 import java.io.Serializable;
 import java.text.NumberFormat;
 import java.util.Date;
-import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -57,7 +53,7 @@ public class Precos implements Serializable {
 //    private int AlteradoPor = func.getIdFunc();
     @Digits(integer = 6, fraction = 2)
     @Column(name = "preco", precision = 6, scale = 2, nullable = false)
-    private double preco;
+    private Double preco;
 
     //-------------------------Construtor-----------------------
     public Precos() {
@@ -96,7 +92,7 @@ public class Precos implements Serializable {
         return dataAlteracao;
     }
 
-    public double getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
@@ -107,7 +103,7 @@ public class Precos implements Serializable {
         return precoFormatado;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 
