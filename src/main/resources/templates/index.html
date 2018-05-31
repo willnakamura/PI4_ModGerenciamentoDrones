@@ -41,13 +41,19 @@
                         <div class="form-label-group">
                             <input type="email" id="inputEmail" name="user" th:field="*{user}" class="form-control" placeholder="Email address">
                             <label for="inputEmail">Email address</label>
-                            <p th:if="${#fields.hasErrors('user')}" th:errors="*{user}">user incorreto</p>
                         </div>
 
                         <div class="form-label-group">
                             <input type="password"  id="inputPassword" name="senha" th:field="*{senha}" class="form-control" placeholder="Password">
                             <label for="inputPassword">Password</label>
-                            <p th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}">user incorreto</p>
+                        </div>
+
+                        <div>
+                            <!-- if -->
+                            <div th:if="${session.erroLogin != null}">
+                                <p th:text="${session.erroLogin}">user incorreto<p>
+                            </div>
+
                         </div>
 
                         <div class="checkbox mb-3">
@@ -55,7 +61,7 @@
                                 <input type="checkbox" value="remember-me"> Remember me
                             </label>
                         </div>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
                     </form>
                 </div>
 

@@ -41,29 +41,31 @@ public class LoginController {
     public ModelAndView logando(@ModelAttribute("login") @Valid Login login, BindingResult bindingResult,
             RedirectAttributes redirectAttributes, HttpSession session) {
 
-        /*  if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
+            session.setAttribute("erroLogin", "Usuário e/ou senha incorreto");
             return new ModelAndView("index");
-        }*/
+        }
         Funcionario func = new Funcionario();
         try {
             func = repository.logar(login.getUser());
         } catch (Exception e) {
             return new ModelAndView("index");
         }
-        
 
         if (func == null) {
+            session.setAttribute("erroLogin", "Usuário e/ou senha incorreto");
             return new ModelAndView("index");
         }
 
         if (func.getEmail().equals(login.getUser()) && func.getSenha().equals(login.getSenha())) {
             session.setAttribute("usuario", func);
+            session.removeAttribute("erroLogin");
             return new ModelAndView("redirect:/home/paginaInicial");
 
         } else {
-            // if (bindingResult.hasErrors()) {
+            session.setAttribute("erroLogin", "Usuário e/ou senha incorreto");
             return new ModelAndView("index");
-            //}
+
         }
         //return null;
     }
@@ -71,7 +73,6 @@ public class LoginController {
     @GetMapping("/logout")
     public ModelAndView logout(HttpSession session) {
         session.invalidate();
-        return new ModelAndView("index");
+        return new ModelAndView("index").addObject("login", new Login());
     }
-
 }
