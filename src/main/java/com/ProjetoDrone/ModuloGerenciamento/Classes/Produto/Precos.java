@@ -6,6 +6,7 @@
 package com.ProjetoDrone.ModuloGerenciamento.Classes.Produto;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.text.NumberFormat;
 import java.util.Date;
 import javax.persistence.Column;
@@ -13,11 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
@@ -37,16 +34,14 @@ public class Precos implements Serializable {
     private Long IdPreco;
 
     @NotNull
-    @UpdateTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_alteracao")
-    private Date dataAlteracao = new Date();
-
+    @UpdateTimestamp
+    private Date dataAlteracao;
+    
     @NotNull
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_criacao")
-    private Date dataCriacao = new Date();
+    @CreationTimestamp
+    private Date dataCriacao;
 
 //    Funcionario func;
 //
