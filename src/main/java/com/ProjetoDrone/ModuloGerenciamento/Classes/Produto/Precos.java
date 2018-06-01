@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,12 +37,22 @@ public class Precos implements Serializable {
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_alteracao")
-    private Date dataAlteracao = new Date();
+    private Date dataAlteracao;
+
+    @PreUpdate
+    protected void onUpdate() {
+        dataAlteracao = new Date();
+    }
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_criacao")
-    private Date dataCriacao = new Date();
+    private Date dataCriacao;
+
+    @PrePersist
+    protected void onCreate() {
+        dataCriacao = new Date();
+    }
 
 //    Funcionario func;
 //
