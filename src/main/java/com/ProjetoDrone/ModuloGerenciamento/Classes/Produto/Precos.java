@@ -15,6 +15,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
@@ -33,14 +35,12 @@ public class Precos implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IdPreco;
 
-    @NotNull
-    @Column(name = "dt_alteracao")
-    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dt_alteracao", insertable = false)
     private Date dataAlteracao;
     
-    @NotNull
-    @Column(name = "dt_criacao")
-    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dt_criacao", updatable = false)
     private Date dataCriacao;
 
 //    Funcionario func;
@@ -111,4 +111,14 @@ public class Precos implements Serializable {
     public Date getDataCriacao() {
         return dataCriacao;
     }
+
+    public void setDataAlteracao(Date dataAlteracao) {
+        this.dataAlteracao = dataAlteracao;
+    }
+
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+    
+    
 }

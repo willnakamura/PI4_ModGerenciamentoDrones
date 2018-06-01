@@ -8,6 +8,7 @@ package com.ProjetoDrone.ModuloGerenciamento.Repository;
 import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Precos;
 import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Produto;
 import com.ProjetoDrone.ModuloGerenciamento.Services.PrecosService;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -47,6 +48,8 @@ public class PrecosRepository implements PrecosService {
     @Transactional
     public void incluir(Precos p) {
             if (p.getIdPrrco() == null) {
+                p.setDataCriacao(new Date());
+                p.setDataAlteracao(new Date());
                 entityManager.persist(p);
             } else {
                 entityManager.merge(p);
@@ -60,7 +63,8 @@ public class PrecosRepository implements PrecosService {
             if (p.getIdPrrco() == null) {
                 entityManager.persist(p);
             } else {
-                entityManager.merge(p);
+                p.setDataAlteracao(new Date());
+                entityManager.merge(p);                
             }
         //entityManager.persist(p);
     }
