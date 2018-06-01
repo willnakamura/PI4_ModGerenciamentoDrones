@@ -62,7 +62,7 @@ public class PrecosRepository implements PrecosService {
             } else {
                 entityManager.merge(p);
             }
-        entityManager.persist(p);
+        //entityManager.persist(p);
     }
 
     @Override

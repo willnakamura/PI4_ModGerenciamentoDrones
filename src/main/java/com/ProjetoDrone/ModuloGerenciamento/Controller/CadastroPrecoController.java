@@ -71,6 +71,6 @@ public class CadastroPrecoController {
             return new ModelAndView("alterarPreco");
         }
 
-        return new ModelAndView("redirect:/home/consultarPreco");
+        return new ModelAndView("redirect:/consultar/preco/consultarPreco");
     }
 }
