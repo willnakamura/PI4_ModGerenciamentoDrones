@@ -37,7 +37,7 @@ public class Precos implements Serializable {
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_alteracao")
-    private Date dataAlteracao;
+    private Date dataAlteracao = new Date();
 
     @PreUpdate
     protected void onUpdate() {

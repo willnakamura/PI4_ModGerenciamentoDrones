@@ -36,9 +36,9 @@ public class CadastroPrecoController {
             @Valid Precos preco, BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {        
 
-        if (bindingResult.hasErrors()) {
-            return new ModelAndView("cadastrarPreco");
-        }
+//        if (bindingResult.hasErrors()) {
+//            return new ModelAndView("cadastrarPreco");
+//        }
 
         try {
             repository.incluir(preco);
@@ -46,7 +46,7 @@ public class CadastroPrecoController {
             return new ModelAndView("cadastrarPreco");
         }
 
-        return new ModelAndView("redirect:/home/paginaInicial");
+        return new ModelAndView("redirect:/consultar/preco/consultarPreco");
     }
 
     @GetMapping("/{id}")
