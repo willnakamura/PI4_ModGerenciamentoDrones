@@ -20,6 +20,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 /**
  *
@@ -35,24 +37,16 @@ public class Precos implements Serializable {
     private Long IdPreco;
 
     @NotNull
+    @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_alteracao")
-    private Date dataAlteracao;
-
-    @PreUpdate
-    protected void onUpdate() {
-        dataAlteracao = new Date();
-    }
+    private Date dataAlteracao = new Date();
 
     @NotNull
+    @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_criacao")
-    private Date dataCriacao;
-
-    @PrePersist
-    protected void onCreate() {
-        dataCriacao = new Date();
-    }
+    private Date dataCriacao = new Date();
 
 //    Funcionario func;
 //
