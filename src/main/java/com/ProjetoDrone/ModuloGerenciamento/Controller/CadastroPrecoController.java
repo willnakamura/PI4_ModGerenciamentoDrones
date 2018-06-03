@@ -34,7 +34,7 @@ public class CadastroPrecoController {
     @PostMapping("/salvar")
     public ModelAndView realizarCadastro(@ModelAttribute("preco")
             @Valid Precos preco, BindingResult bindingResult,
-            RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes) {        
 
         if (bindingResult.hasErrors()) {
             return new ModelAndView("cadastrarPreco");
@@ -46,7 +46,7 @@ public class CadastroPrecoController {
             return new ModelAndView("cadastrarPreco");
         }
 
-        return new ModelAndView("redirect:/home/paginaInicial");
+        return new ModelAndView("redirect:/consultar/preco/consultarPreco");
     }
 
     @GetMapping("/{id}")
@@ -60,7 +60,8 @@ public class CadastroPrecoController {
     @PostMapping("/alterar")
     public ModelAndView alterarPreco(@ModelAttribute("preco") @Valid Precos preco, BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
-
+        
+        
         if (bindingResult.hasErrors()) {
             return new ModelAndView("alterarPreco");
         }

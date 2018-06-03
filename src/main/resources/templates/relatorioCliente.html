@@ -30,10 +30,35 @@
                 <div class="row" >
                     <div class="col-md-12">
                         <div class="form-group"> 
+                            
                             <form th:action="@{}" th:object="${}" method="post">
 
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Nome</th>
+                                            <th scope="col">Fabricante</th>
+                                            <th scope="col">Preço</th>
+                                            <th scope="col">Estoque</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                                
+                                        <tr th:each="p :${session.produtos}">
+                                            <td th:text="${p.nome}"></td>
+                                            <td th:text="${p.fabricante}"></td>
+                                            <td th:text="${p.precos.precoFormatado}"></td>
+                                            <td th:text="${p.estoque}"></td>
+                                            <td>
+                                                <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/cadastrar/produto/{id}(id=${p.idProd})}">Alterar</a>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>  
+
+
                             </form>
 
                         </div>
