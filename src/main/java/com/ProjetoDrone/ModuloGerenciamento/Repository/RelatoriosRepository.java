@@ -41,7 +41,7 @@ public class RelatoriosRepository implements RelatoriosService {
         + "inner join venda_prod vp on vp.venda_id = v.vendaid "
         + "inner join produtos p on p.produto_id = vp.produto_id "
         + "inner join clientes c on c.cliente_id = v.cliente_id "
-        + "where v.dt_venda >= ?1 and v.dt_venda < date_add(?2, interval 1 day)");
+        + "where v.dt_venda >= ?1 and v.dt_venda < date_add(?2, interval 1 day)", VendasRelatorio.class);
         query.setParameter(1, data_inicial);
         query.setParameter(2, data_final);
         List<VendasRelatorio> resultados = query.getResultList();
