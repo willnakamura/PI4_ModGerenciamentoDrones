@@ -6,7 +6,9 @@
 package com.ProjetoDrone.ModuloGerenciamento.Services;
 
 import com.ProjetoDrone.ModuloGerenciamento.Relatorios.Cliente;
+import com.ProjetoDrone.ModuloGerenciamento.Relatorios.VendasRelatorio;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -16,4 +18,6 @@ import java.util.List;
 public interface RelatoriosService extends Serializable {
 
     public List<Cliente> listar();
+    
+    public List<VendasRelatorio> listarVendas(Date data_inicial, Date data_final);
 }
