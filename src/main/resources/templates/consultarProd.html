@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html lang="en" layout:decorate="~{modelo}">
     <head>
         <meta charset="UTF-8">
@@ -9,52 +11,58 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
         <style type="text/css">
-
         </style>
 
     </head>
 
     <body>
+
         <main role="main" layout:fragment="conteudo">
 
             <div class="jumbotron">
-                <div class="container">
-                    <h2 class="display-4 mt-4" style="font-size:3em;">Consultar Produto</h2>
-
+                <div class="">
+                    <h2 class="display-4 mt-4" style="font-size:3em;" >Consultar Produto</h2>
                 </div>
             </div>
 
             <div class="container">
-
-                <div class="row">
+                <!-- Example row of columns -->
+                <div class="row" >
                     <div class="col-md-12" style="margin-bottom: 15px; padding-left: 0px;">
-                        <form class="form-inline" th:action="@{}" th:object="${}" method="post">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Gerar Relatório</button>
+                        <form class="form-inline" th:action="@{/consultar/produto}" th:object="${prod}" method="post">
+                            <input class="form-control mr-sm-2" type="search" th:field="*{nome}" placeholder="Nome produto" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                         </form>
                     </div>
-
 
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Fabricante</th>
+                                <th scope="col">Preço</th>
+                                <th scope="col">Estoque</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        
                         <tbody>
 
                             <tr th:each="p :${session.produtos}">
                                 <td th:text="${p.nome}"></td>
                                 <td th:text="${p.fabricante}"></td>
+                                <td th:text="${p.precos.precoFormatado}"></td>
+                                <td th:text="${p.estoque}"></td>
+                                <td>
+                                    <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/cadastrar/produto/{id}(id=${p.idProd})}">Alterar</a>
+                                </td>
                             </tr>
-                            
-                        <!-- <a class="btn btn-outline-success my-2 my-sm-0">Exportar</a> -->
+
                         </tbody>
-                    </table> 
+                    </table>  
+
                 </div>
             </div>
+
         </main>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -63,3 +71,4 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     </body>
 </html>
+
