@@ -6,7 +6,6 @@
 package com.ProjetoDrone.ModuloGerenciamento.Repository;
 
 import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Precos;
-import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Produto;
 import com.ProjetoDrone.ModuloGerenciamento.Services.PrecosService;
 import java.util.Date;
 import java.util.List;
