@@ -84,7 +84,5 @@ public class VendasRelatorio implements Serializable {
 
     public void setTotal_venda(double total_venda) {
         this.total_venda = total_venda;
-    }
-    
-    
+    }    
 }
