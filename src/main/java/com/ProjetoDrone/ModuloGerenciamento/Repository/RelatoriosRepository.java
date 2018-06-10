@@ -8,7 +8,7 @@ package com.ProjetoDrone.ModuloGerenciamento.Repository;
 import com.ProjetoDrone.ModuloGerenciamento.Relatorios.Cliente;
 import com.ProjetoDrone.ModuloGerenciamento.Relatorios.VendasRelatorio;
 import com.ProjetoDrone.ModuloGerenciamento.Services.RelatoriosService;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

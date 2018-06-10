@@ -29,8 +29,13 @@
                 <!-- Example row of columns -->
                 <div class="row" >
                     <div class="col-md-12" style="margin-bottom: 15px; padding-left: 0px;">
-                        <form class="form-inline" th:action="@{/relatorio/venda}" th:object="${vendRelatorio}" method="post">
-                            <input class="form-control mr-sm-2" type="search" th:field="*{}" placeholder="" aria-label="Search">
+                        <form class="form-inline" th:action="@{/relatorio/venda}" th:object="${dataRela}" method="post">
+
+                            <font style="vertical-align: inherit; margin-right: 15px;">Data inicio</font>
+                            <input class="form-control mr-sm-2" type="date" th:field="*{dataInicio}" placeholder="" aria-label="Search">
+
+                            <font style="vertical-align: inherit; margin-right: 10px; margin-left: 15px;">Data fim</font>
+                            <input class="form-control mr-sm-2" type="date" th:field="*{dataFim}" placeholder="" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                         </form>
                     </div>
@@ -41,7 +46,6 @@
                                 <th scope="col">Cod. compra</th>
                                 <th scope="col">Status pedido</th>
                                 <th scope="col">Nome Cliente</th>
-                                <!-- Vai listar todos os produtos, ou apenas um com o msm cód? -->
                                 <th scope="col">Produto</th>
                                 <th scope="col">Quantidade</th>
                                 <th scope="col">Total venda</th>
@@ -50,15 +54,16 @@
                         </thead>
                         <tbody>
 
-                            <tr th:each="p :${session.}">
-                                <td th:text="${p.}"></td>
-                                <td th:text="${p.}"></td>
-                                <td th:text="${p.}"></td>
-                                <td th:text="${p.}"></td>
-                                <td th:text="${p.}"></td>
-                                <td th:text="${p.}"></td>
+                            <tr th:each="p :${session.relatorio}">
+                                <td th:text="${p.codigo_compra}"></td>
+                                <td th:text="${p.status_pedido}"></td>
+                                <td th:text="${p.nome_cliente}"></td>
+                                <td th:text="${p.produto}"></td>
+                                <td th:text="${p.qtd}"></td>
+                                <td th:text="${p.total_venda}"></td>
                                 <td>
-                                    <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/cadastrar/produto/{id}(id=${p.idProd})}">Alterar</a>
+                                   <!-- <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/cadastrar/produto/{id}(id=${p.idProd})}">Alterar</a>
+                                   -->
                                 </td>
                             </tr>
 

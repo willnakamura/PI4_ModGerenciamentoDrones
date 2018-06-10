@@ -5,17 +5,23 @@
  */
 package com.ProjetoDrone.ModuloGerenciamento.Controller;
 
+import com.ProjetoDrone.ModuloGerenciamento.Classes.Funcionario.Funcionario;
+import com.ProjetoDrone.ModuloGerenciamento.Relatorios.DatasRelat;
 import com.ProjetoDrone.ModuloGerenciamento.Relatorios.VendasRelatorio;
 import com.ProjetoDrone.ModuloGerenciamento.Repository.RelatoriosRepository;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -27,20 +33,29 @@ public class RelatorioVendasController {
 
     @Autowired
     RelatoriosRepository repository;
+    
+    @GetMapping("/tela")
+    public ModelAndView telaRelatorio (){
+        return new ModelAndView("relatorioVendas").addObject("dataRela", new DatasRelat());
+    }
 
     @PostMapping
-    public ModelAndView gerarRelatorio(@ModelAttribute("vendRelatorio") VendasRelatorio vendRelatorio,
-            HttpSession sessao) {
+    public ModelAndView gerarRelatorio(@ModelAttribute("dataRela")
+            @Valid DatasRelat dataRela, BindingResult bindingResult,
+            RedirectAttributes redirectAttributes, HttpSession sessao) {
 
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("relatorioVendas");
+        }       
+        
         List<VendasRelatorio> vendasRel = new ArrayList<VendasRelatorio>();
-
-        //fazer um if se o campo de pesquisa for null, retorna toda a lista.
-//        try {
-//            produtos = repository.porNome(prod.getNome());
-//            sessao.setAttribute("produtos", produtos);
-//        } catch (Exception e) {
-//            return new ModelAndView("consultarProd");
-//        }
-        return new ModelAndView("consultarProd");
+        
+        try {
+            vendasRel = repository.listarVendas(dataRela.getDataInicio(), dataRela.getDataFim());
+            sessao.setAttribute("relatorio", vendasRel);
+        } catch (Exception e) {
+            return new ModelAndView("relatorioVendas");
+        }
+        return new ModelAndView("relatorioVendas");
     }
 }
