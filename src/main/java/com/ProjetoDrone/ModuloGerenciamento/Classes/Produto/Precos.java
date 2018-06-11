@@ -53,10 +53,10 @@ public class Precos implements Serializable {
     private Double preco;
     
     @Column(name = "desconto")
-    private double desconto;
+    private Double desconto;
     
     @Column(name = "desconto_ativo")
-    private boolean desconto_ativo;
+    private Boolean desconto_ativo;
 
     //-------------------------Construtor-----------------------
     public Precos() {
