@@ -6,7 +6,6 @@
 package com.ProjetoDrone.ModuloGerenciamento.Classes.Produto;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.text.NumberFormat;
 import java.util.Date;
 import javax.persistence.Column;
@@ -18,9 +17,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 /**
  *
@@ -55,6 +51,12 @@ public class Precos implements Serializable {
     @Digits(integer = 6, fraction = 2)
     @Column(name = "preco", precision = 6, scale = 2, nullable = false)
     private Double preco;
+    
+    @Column(name = "desconto")
+    private Double desconto;
+    
+    @Column(name = "desconto_ativo")
+    private Boolean desconto_ativo;
 
     //-------------------------Construtor-----------------------
     public Precos() {
@@ -118,6 +120,30 @@ public class Precos implements Serializable {
 
     public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public Long getIdPreco() {
+        return IdPreco;
+    }
+
+    public void setIdPreco(Long IdPreco) {
+        this.IdPreco = IdPreco;
+    }
+
+    public double getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(double desconto) {
+        this.desconto = desconto;
+    }
+
+    public boolean isDesconto_ativo() {
+        return desconto_ativo;
+    }
+
+    public void setDesconto_ativo(boolean desconto_ativo) {
+        this.desconto_ativo = desconto_ativo;
     }
     
     
