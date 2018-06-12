@@ -20,4 +20,5 @@ public interface RelatoriosService extends Serializable {
     public List<Cliente> listar();
     
     public List<VendasRelatorio> listarVendas(Date data_inicial, Date data_final);
+
 }
