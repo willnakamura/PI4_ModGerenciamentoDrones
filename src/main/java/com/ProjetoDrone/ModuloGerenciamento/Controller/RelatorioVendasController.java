@@ -6,6 +6,7 @@
 package com.ProjetoDrone.ModuloGerenciamento.Controller;
 
 import com.ProjetoDrone.ModuloGerenciamento.Classes.Funcionario.Funcionario;
+import com.ProjetoDrone.ModuloGerenciamento.Relatorios.CodVenda;
 import com.ProjetoDrone.ModuloGerenciamento.Relatorios.DatasRelat;
 import com.ProjetoDrone.ModuloGerenciamento.Relatorios.VendasRelatorio;
 import com.ProjetoDrone.ModuloGerenciamento.Repository.RelatoriosRepository;
@@ -33,9 +34,9 @@ public class RelatorioVendasController {
 
     @Autowired
     RelatoriosRepository repository;
-    
+
     @GetMapping("/tela")
-    public ModelAndView telaRelatorio (){
+    public ModelAndView telaRelatorio() {
         return new ModelAndView("relatorioVendas").addObject("dataRela", new DatasRelat());
     }
 
@@ -46,10 +47,10 @@ public class RelatorioVendasController {
 
         if (bindingResult.hasErrors()) {
             return new ModelAndView("relatorioVendas");
-        }       
-        
+        }
+
         List<VendasRelatorio> vendasRel = new ArrayList<VendasRelatorio>();
-        
+
         try {
             vendasRel = repository.listarVendas(dataRela.getDataInicio(), dataRela.getDataFim());
             sessao.setAttribute("relatorio", vendasRel);
@@ -57,5 +58,30 @@ public class RelatorioVendasController {
             return new ModelAndView("relatorioVendas");
         }
         return new ModelAndView("relatorioVendas");
+    }
+
+    @GetMapping("/consulta")
+    public ModelAndView telaConsulta() {
+        return new ModelAndView("consultaVenda").addObject("codVenda", new CodVenda());
+    }
+
+    @PostMapping
+    public ModelAndView listarVenda(@ModelAttribute("codVenda")
+            @Valid CodVenda codVenda, BindingResult bindingResult,
+            RedirectAttributes redirectAttributes, HttpSession sessao) {
+
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("consultaVenda");
+        }
+
+        List<VendasRelatorio> vendasRel = new ArrayList<VendasRelatorio>();
+
+        try {
+            vendasRel = repository.listarVendas(codVenda.getCodCompra());
+            sessao.setAttribute("listaVenda", vendasRel);
+        } catch (Exception e) {
+            return new ModelAndView("consultaVenda");
+        }
+        return new ModelAndView("consultaVenda");
     }
 }
