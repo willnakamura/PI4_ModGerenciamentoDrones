@@ -5,7 +5,9 @@
  */
 package com.ProjetoDrone.ModuloGerenciamento.Repository;
 
+import com.ProjetoDrone.ModuloGerenciamento.Classes.Produto.Produto;
 import com.ProjetoDrone.ModuloGerenciamento.Relatorios.Cliente;
+import com.ProjetoDrone.ModuloGerenciamento.Relatorios.Venda;
 import com.ProjetoDrone.ModuloGerenciamento.Relatorios.VendasRelatorio;
 import com.ProjetoDrone.ModuloGerenciamento.Services.RelatoriosService;
 import java.util.Date;
@@ -13,6 +15,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -60,6 +63,27 @@ public class RelatoriosRepository implements RelatoriosService {
         query.setParameter(1, codigoCompra);
         List<VendasRelatorio> resultados = query.getResultList();
         return resultados;
+    }
+
+    @Override
+    public Venda obter(long codigoCompra) {
+        Query query = entityManager.createQuery(
+                "SELECT DISTINCT v FROM Venda v "
+                + "WHERE v.codigoCompra = :codigoCompra");
+        query.setParameter("codigoCompra", codigoCompra);
+        Venda resultado = (Venda) query.getSingleResult();
+        return resultado;
+    }
+    
+   @Override
+    @Transactional
+    public void alterar(Venda v){
+    if (v.getIdVenda()== null) {
+            entityManager.persist(v);
+        } else {
+            entityManager.merge(v);
+        }
+    
     }
 
 }
