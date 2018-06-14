@@ -29,7 +29,7 @@
                 <!-- Example row of columns -->
                 <div class="row" >
                     <div class="col-md-12" style="margin-bottom: 15px; padding-left: 0px;">
-                        <form class="form-inline" th:action="@{/relatorio/venda/consulta}" th:object="${codVenda}" method="post">
+                        <form class="form-inline" th:action="@{/relatorio/venda/listarVendas}" th:object="${codVenda}" method="post">
                             <input class="form-control mr-sm-2" type="search" th:field="*{codCompra}" placeholder="Código da compra" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                         </form>

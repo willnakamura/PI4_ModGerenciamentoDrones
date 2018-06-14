@@ -65,7 +65,7 @@ public class RelatorioVendasController {
         return new ModelAndView("consultaVenda").addObject("codVenda", new CodVenda());
     }
 
-    @PostMapping
+    @PostMapping("/listarVendas")
     public ModelAndView listarVenda(@ModelAttribute("codVenda")
             @Valid CodVenda codVenda, BindingResult bindingResult,
             RedirectAttributes redirectAttributes, HttpSession sessao) {
