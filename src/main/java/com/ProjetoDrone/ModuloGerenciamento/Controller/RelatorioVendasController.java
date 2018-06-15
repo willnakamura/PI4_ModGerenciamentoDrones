@@ -105,11 +105,10 @@ public class RelatorioVendasController {
         vendaSession.setStatusPedido(venda.getStatusPedido());
 
         try {
-             repository.alterar(vendaSession);
+             repository.alterar(vendaSession.getIdVenda(), vendaSession.getStatusPedido());
         } catch (Exception e) {
             return new ModelAndView("alterarStatusVenda");
         }
-
         return new ModelAndView("consultaVenda");
     }
 }
