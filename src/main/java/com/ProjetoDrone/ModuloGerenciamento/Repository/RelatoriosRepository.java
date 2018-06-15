@@ -77,13 +77,11 @@ public class RelatoriosRepository implements RelatoriosService {
     
    @Override
     @Transactional
-    public void alterar(Venda v){
-    if (v.getIdVenda()== null) {
-            entityManager.persist(v);
-        } else {
-            entityManager.merge(v);
-        }
-    
+    public void alterar(int id, String status){
+    Query query = entityManager.createNativeQuery("update vendas set status_pedido = ?1 where vendaid = 2?");
+    query.setParameter(1, status);
+    query.setParameter(2, id);
+    query.executeUpdate();
     }
 
 }

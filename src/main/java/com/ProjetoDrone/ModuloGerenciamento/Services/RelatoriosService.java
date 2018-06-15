@@ -26,5 +26,5 @@ public interface RelatoriosService extends Serializable {
     
     public Venda obter(String codigoCompra);
     
-    public void alterar(Venda v);
+    public void alterar(int id, String status);
 }
