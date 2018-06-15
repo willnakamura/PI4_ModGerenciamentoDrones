@@ -41,7 +41,6 @@
                                 <th scope="col">Cod. compra</th>
                                 <th scope="col">Status pedido</th>
                                 <th scope="col">Nome Cliente</th>
-                                <th scope="col">Produto</th>
                                 <th scope="col">Quantidade</th>
                                 <th scope="col">Total venda</th>
                                 <th scope="col"></th>
@@ -53,12 +52,10 @@
                                 <td th:text="${p.codigo_compra}"></td>
                                 <td th:text="${p.status_pedido}"></td>
                                 <td th:text="${p.nome_cliente}"></td>
-                                <td th:text="${p.produto}"></td>
                                 <td th:text="${p.qtd}"></td>
                                 <td th:text="${p.total_venda}"></td>
                                 <td>
-                                    <!-- <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/cadastrar/produto/{id}(id=${p.idProd})}">Alterar</a>
-                                    -->
+                                    <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/relatorio/venda/{id}(id=${p.codigo_compra})}">Alterar</a>
                                 </td>
                             </tr>
 

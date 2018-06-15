@@ -30,27 +30,36 @@
                 <div class="row" >
                     <div class="col-md-12">
                         <div class="form-group"> 
-                            <form th:action="@{/cadastrar/produto/alterar}" th:object="${produto}" method="post">
+                            <form th:action="@{/relatorio/venda/alterar}" th:object="${venda}" method="post">
 
-                               <!-- <div class="input-group col-md-6" style="display: none;">
+                                <div class="input-group col-md-6" style="display: none;">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="">ID</span>
                                     </div>
-                                    <input type="hidden" th:field="*{idProd}" class="form-control">
-                                </div> -->
+                                    <input type="hidden" th:field="*{idVenda}" class="form-control">
+                                </div>                                
+
+                                <div class="input-group col-md-6">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">Data venda</span>
+                                    </div>
+                                    <input type="text" name="" th:field="*{dataVenda}" class="form-control col-sm-6"> 
+                                </div>
 
                                 <div class="input-group col-md-6">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="">Código compra</span>
                                     </div>
-                                    <input type="text" th:field="*{}" class="form-control" readonly="true">
+                                    <input type="text" th:field="*{codigoCompra}" class="form-control" readonly="true">
                                 </div>
 
                                 <div class="form-group col-md-6" style="margin-top: 10px;">
                                     <label for="exampleFormControlTextarea2">Status pedido</label>
-                                    <select>
-                                        <option>x</option>
-                                        <option>x</option>
+                                    <select th:field="*{statusPedido}">
+                                        <option value="Aguardando aprovação">Aguardando aprovação</option>
+                                        <option value="Pagamento aprovado">Pagamento aprovado</option>
+                                        <option value="A caminho">A caminho</option>
+                                        <option value="Entregue">Entregue</option>
                                     </select>
                                 </div>
 
@@ -58,69 +67,17 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="">Nome cliente</span>
                                     </div>
-                                    <input type="text" th:field="*{fabricante}" class="form-control" readonly="true">
+                                    <input type="text" th:field="*{nome}" class="form-control" readonly="true">
                                 </div>
-
-                                <div class="input-group col-md-6" style="margin-top: 10px;">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="">Link</span>
-                                    </div>
-                                    <input type="text" th:field="*{imagem_url}" class="form-control">
-                                    <p class="text-danger" th:if="${#fields.hasErrors('imagem_url')}" th:errors="*{imagem_url}">Imagem incorreto
-                                    </p>
-                                </div>
-
 
                                 <div class="row" style="margin-left: 0px; margin-top: 10px;">
-                                    <div class="col-md-2 mb-3">
-                                        <label for="country">Quantidade</label>
-                                        <input type="number" th:field="*{estoque}" class="form-control">
-                                        <p class="text-danger" th:if="${#fields.hasErrors('estoque')}" th:errors="*{estoque}">name incorreto
-                                        </p>
+                                    <div class="form-group blu-margin col-md-3" >
+                                        <label for="country">Preço total</label>
+                                        <input type="number" th:field="*{totalVenda}" class="form-control">
                                     </div>
-
-                                    <div class="form-group blu-margin col-md-3 mb-3" style="margin-top: 32px;" >
-                                        <select class="form-control" id="dropOperator" th:field="*{idPreco}">
-                                            <option value="0">Selecione preço</option>
-                                            <option th:value="${precos.IdPrrco}" th:text="${precos.precoFormatado}" th:each="precos :${session.listPrecos}"></option>
-                                        </select>
-                                    </div>
-
                                 </div>
 
-                                <div class="row" style="margin-left: 0px; ">
-                                    <div class="col-md-2 mb-3">
-                                        <label for="country">Peso</label>
-                                        <input type="number" th:field="*{peso}" class="form-control">
-                                        <p class="text-danger" th:if="${#fields.hasErrors('peso')}" th:errors="*{peso}">name incorreto
-                                        </p>
-                                    </div>
-                                    <div class="col-md-sm-2 mb-3">
-                                        <label for="state">Velocidade máx.</label>
-                                        <input type="number" th:field="*{velocidadeMax}" class="form-control">
-                                        <p class="text-danger" th:if="${#fields.hasErrors('velocidadeMax')}" th:errors="*{velocidadeMax}">name incorreto
-                                        </p>
-                                    </div>  
-                                </div>
-
-                                <div class="row" style="margin-left: 0px; ">
-                                    <div class="col-md-2 mb-3">
-                                        <label for="country">Duração da bateria</label>
-                                        <input type="number" th:field="*{bateriaDuracao}" class="form-control">
-                                        <p class="text-danger" th:if="${#fields.hasErrors('bateriaDuracao')}" th:errors="*{bateriaDuracao}">name incorreto
-                                        </p>
-                                    </div>
-                                    <div class="col-md-sm-2 mb-3">
-                                        <label for="state">Câmera</label>
-                                        <div class="col-12"> 
-                                            <input type="radio" name="camera" th:field="*{camera}" id="cameraSim" value="1" checked> Sim<br>
-                                            <input type="radio" name="camera" th:field="*{camera}" id="cameraNao" value="0"> Não<br>
-                                            <p class="text-danger" th:if="${#fields.hasErrors('camera')}" th:errors="*{camera}">name incorreto
-                                            </p>
-                                        </div>
-                                    </div>  
-                                </div>                            
-                                <button type="submit" class="btn btn-secondary" style="margin-left: 12px;">Alterar</button>
+                                <button type="submit" class="btn btn-secondary" style="margin-left: 12px;">Salvar</button>
                             </form>
 
                         </div>

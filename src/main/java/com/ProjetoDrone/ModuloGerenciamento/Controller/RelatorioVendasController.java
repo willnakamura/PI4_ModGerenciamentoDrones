@@ -7,6 +7,7 @@ package com.ProjetoDrone.ModuloGerenciamento.Controller;
 
 import com.ProjetoDrone.ModuloGerenciamento.Classes.Funcionario.Funcionario;
 import com.ProjetoDrone.ModuloGerenciamento.Relatorios.CodVenda;
+import com.ProjetoDrone.ModuloGerenciamento.Relatorios.Venda;
 import com.ProjetoDrone.ModuloGerenciamento.Relatorios.DatasRelat;
 import com.ProjetoDrone.ModuloGerenciamento.Relatorios.VendasRelatorio;
 import com.ProjetoDrone.ModuloGerenciamento.Repository.RelatoriosRepository;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -82,6 +84,32 @@ public class RelatorioVendasController {
         } catch (Exception e) {
             return new ModelAndView("consultaVenda");
         }
+        return new ModelAndView("consultaVenda");
+    }
+
+    @GetMapping("/{id}")
+    public ModelAndView obterVenda(@PathVariable("id") String id, HttpSession sessao) {
+
+        Venda venda = repository.obter(id);
+        sessao.setAttribute("vendaAlterar", venda);
+        return new ModelAndView("alterarStatusVenda").addObject("venda", venda);
+    }
+
+    @PostMapping("/alterar")
+    public ModelAndView alterarStatus(@ModelAttribute("venda") Venda venda,
+            BindingResult bindingResult, RedirectAttributes redirectAttributes,
+            HttpSession sessao) {
+
+        Venda vendaSession = (Venda) sessao.getAttribute("vendaAlterar");
+        
+        vendaSession.setStatusPedido(venda.getStatusPedido());
+
+        try {
+             repository.alterar(vendaSession);
+        } catch (Exception e) {
+            return new ModelAndView("alterarStatusVenda");
+        }
+
         return new ModelAndView("consultaVenda");
     }
 }

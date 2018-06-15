@@ -66,7 +66,7 @@ public class RelatoriosRepository implements RelatoriosService {
     }
 
     @Override
-    public Venda obter(long codigoCompra) {
+    public Venda obter(String codigoCompra) {
         Query query = entityManager.createQuery(
                 "SELECT DISTINCT v FROM Venda v "
                 + "WHERE v.codigoCompra = :codigoCompra");
